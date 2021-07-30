@@ -1,0 +1,75 @@
+<h3>Template driven form</h3>
+<form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+  <div class="form-group">
+    <label class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      name="name"
+      [(ngModel)]="name"
+      required
+      minlength="4"
+      maxlength="10"
+      #nameRef="ngModel"
+    />
+    <div *ngIf="nameRef.errors && (nameRef.invalid || nameRef.pristine)">
+      <div *ngIf="nameRef.errors.required" class="form-error">
+        Please enter a name
+      </div>
+      <div *ngIf="nameRef.errors.minlength" class="form-error">
+        min length for name is 4
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Email</label>
+    <input
+      type="text"
+      class="form-control"
+      name="mail"
+      ngModel
+      #mailRef="ngModel"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      required
+    />
+    <div *ngIf="mailRef.errors && mailRef.touched">
+      <div *ngIf="mailRef.errors.required" class="form-error">
+        Please enter an email
+      </div>
+      <div *ngIf="mailRef.errors.pattern" class="form-error">
+        This is not valid email
+      </div>
+    </div>
+  </div>
+  <div ngModelGroup="address">
+    <div class="form-group">
+      <label class="form-label">Country</label>
+      <input
+        type="text"
+        class="form-control"
+        name="country"
+        ngModel
+      />
+    </div>
+    <div class="form-group">
+      <label class="form-label">City</label>
+      <input
+        type="text"
+        class="form-control"
+        name="city"
+        ngModel
+      />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Age</label>
+    <input
+      type="number"
+      class="form-control"
+      name="age"
+      ngModel
+    />
+  </div>
+  <button type="submit">Submit</button>
+</form>
+

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SecondComponent } from './second/second.component';
+import { ReactiveComponent } from './reactive/reactive.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: SecondComponent
+    component: ReactiveComponent
   }
 ];
 
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SecondRoutingModule { }
+export class ReactiveRoutingModule { }

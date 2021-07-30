@@ -1,0 +1,54 @@
+<p>experimental</p>
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="name"
+    />
+  </div>
+  <div class="form-group">
+    <label class="form-label">Email</label>
+    <input
+      type="text"
+      class="form-control"
+      formControlName="email"
+    />
+  </div>
+  <div formGroupName="address">
+    <div class="form-group">
+      <label class="form-label">Country</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="country"
+      />
+    </div>
+    <div class="form-group">
+      <label class="form-label">City</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="city"
+      />
+    </div>
+  </div>
+  <div class="form-group" formArrayName="cities" *ngFor="let item of cities.controls;let i = index;">
+    <div [formGroupName]="i">
+      <label class="form-label">cites</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+      />
+    </div>
+
+
+
+  </div>
+  <button (click)="addCity()">Add city</button>
+  <button type="submit">Submit</button>
+</form>
+
